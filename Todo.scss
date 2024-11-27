@@ -1,0 +1,21 @@
+// Bootstrap'i içeri al
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/scss/bootstrap";
+
+// Liste Öğesi Tasarımı
+.list-group-item {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #f8f9fa;
+    }
+}
+
+// Tamamlanmış Görev
+.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}

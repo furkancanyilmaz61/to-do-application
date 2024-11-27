@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Todo.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Logo -->
+                <div class="text-center mb-4">
+                    <img src="SoftLogo.jpg" alt="To-Do Application Logo" class="img-fluid logo">
+                </div>
+
+                <!-- Header -->
+                <h1 class="text-center mb-4">To-Do Application</h1>
+
+                <!-- Form -->
+                <form id="todo-form" class="input-group mb-3">
+                    <input type="text" class="form-control" id="todo-input" placeholder="Add a task..." required>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+
+                <!-- Group List -->
+                <ul id="todo-list" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="Todo.js"></script>
+</body>
+</html>
