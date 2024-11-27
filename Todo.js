@@ -1,12 +1,12 @@
-// Select HTML Elements
+// HTML Elementlerini Seç
 const todoForm = document.getElementById('todo-form');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
 
-// Load Tasks from Local Storage
+// Local Storage'dan Görevleri Yükle
 document.addEventListener('DOMContentLoaded', loadTodos);
 
-// Adding a New Task
+// Yeni Görev Ekleme
 todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const taskText = todoInput.value.trim();
@@ -15,10 +15,10 @@ todoForm.addEventListener('submit', (e) => {
 
     addTaskToList(taskText);
     saveToLocalStorage(taskText);
-    todoInput.value = ''; // Clear input box
+    todoInput.value = ''; // Giriş kutusunu temizle
 });
 
-// Add Task to List
+// Görevi Listeye Ekle
 function addTaskToList(taskText, isCompleted = false) {
     const todoItem = document.createElement('li');
     todoItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
@@ -29,7 +29,7 @@ function addTaskToList(taskText, isCompleted = false) {
 
     const buttonGroup = document.createElement('div');
 
-    // Complete Button
+    // Tamamla Butonu
     const completeButton = document.createElement('button');
     completeButton.textContent = 'Complete';
     completeButton.classList.add('btn', 'btn-success', 'btn-sm', 'me-2');
@@ -38,7 +38,7 @@ function addTaskToList(taskText, isCompleted = false) {
         toggleCompletionInLocalStorage(taskText);
     });
 
-    //Edit Button
+    // Düzenle Butonu
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
     editButton.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
@@ -50,7 +50,7 @@ function addTaskToList(taskText, isCompleted = false) {
         }
     });
 
-    //Delete Button
+    // Sil Butonu
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
@@ -59,7 +59,7 @@ function addTaskToList(taskText, isCompleted = false) {
         removeFromLocalStorage(taskText);
     });
 
-    // Add a New Button
+    // Butonları Ekle
     buttonGroup.appendChild(completeButton);
     buttonGroup.appendChild(editButton);
     buttonGroup.appendChild(deleteButton);
@@ -69,33 +69,32 @@ function addTaskToList(taskText, isCompleted = false) {
     todoList.appendChild(todoItem);
 }
 
-// Add Task to Local Storage
+// Local Storage'a Görev Ekle
 function saveToLocalStorage(taskText) {
     let todos = getTodosFromLocalStorage();
     todos.push({ text: taskText, completed: false });
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-// Load Tasks from Local Storage
+// Local Storage'dan Görevleri Yükle
 function loadTodos() {
     const todos = getTodosFromLocalStorage();
     todos.forEach(todo => addTaskToList(todo.text, todo.completed));
 }
 
-//Fetch Task from Local Storage
+// Fetch Task from Local Storage
 function getTodosFromLocalStorage() {
     const todos = localStorage.getItem('todos');
     return todos ? JSON.parse(todos) : [];
 }
 
-// Delete Task from Local Storage
+//Delete Task from Local Storage
 function removeFromLocalStorage(taskText) {
     let todos = getTodosFromLocalStorage();
     todos = todos.filter(todo => todo.text !== taskText);
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-//Update Task Completion Status
 function toggleCompletionInLocalStorage(taskText) {
     let todos = getTodosFromLocalStorage();
     todos = todos.map(todo => {
@@ -107,7 +106,7 @@ function toggleCompletionInLocalStorage(taskText) {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-//Edit Task
+// Edit Task
 function editTaskInLocalStorage(oldText, newText) {
     let todos = getTodosFromLocalStorage();
     todos = todos.map(todo => {
